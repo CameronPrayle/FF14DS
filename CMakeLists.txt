@@ -4,9 +4,11 @@ project(FF14DS VERSION 0.1.0 LANGUAGES C CXX)
 # Getting all files for exe
 file(GLOB SOURCES
     *.cpp
-    DataTypes/*.h
-    MainDisplay/inc/*.h
-    MainDisplay/src/*.cpp
+    Packages/DataTypes/inc/*.h
+    Packages/MainDisplay/inc/*.h
+    Packages/MainDisplay/src/*.cpp
+    Packages/ScenarioController/inc/*.h
+    Packages/ScenarioController/src/*.cpp
 )
 
 add_executable(FF14DS ${SOURCES})
@@ -15,8 +17,9 @@ add_executable(FF14DS ${SOURCES})
 target_include_directories(FF14DS PUBLIC
     "${PROJECT_SOURCE_DIR}"
     "${PROJECT_SOURCE_DIR}/SDL2/include/SDL2"
-    "${PROJECT_SOURCE_DIR}/DataTypes"
-    "${PROJECT_SOURCE_DIR}/MainDisplay/inc"
+    "${PROJECT_SOURCE_DIR}/Packages/DataTypes"
+    "${PROJECT_SOURCE_DIR}/Packages/MainDisplay/inc"
+    "${PROJECT_SOURCE_DIR}/Packages/ScenarioController/inc"
 )
 
 # Finding SDL2 libraries

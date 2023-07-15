@@ -5,13 +5,14 @@
 #include "SDL_image.h"
 
 /**
- *  Enum to give background a catagory
+ *  Struct to hold window size as a float
  *  
 */
-typedef enum
+typedef struct
 {
-    BACKGROUND_CATAGORY_MAIN_MENU = 1
-} BackgroundCatagoryEnumType;
+    int w;
+    int h;
+} WindowSize;
 
 /**
  *  Struct to setup main background for the game
@@ -23,16 +24,23 @@ typedef struct
     SDL_Texture *texture;                   // Texture that will be applied to background rect
     SDL_Surface *surface;                   // Surface that holds the image that will be used to make the texture
     std::string imagePath;                  // Image path for the surface
-    BackgroundCatagoryEnumType catagory;    // Catagory of the background
 } Background;
 
 /**
- *  Struct to hold window size as a float
+ *  Enum to give a scenario a catagory
+ *  
+*/
+typedef enum
+{
+    SCENARIO_CATAGORY_MAIN_MENU = 1
+} ScenarioCatagoryEnumType;
+
+/**
+ *  Struct to hold scenario data
  *  
 */
 typedef struct
 {
-    int w;
-    int h;
-} WindowSize;
-
+    Background background;                // Background for a scenario
+    ScenarioCatagoryEnumType catagory;    // Catagory of the Scenario
+} Scenario;

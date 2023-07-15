@@ -1,9 +1,11 @@
 #include "MainDisplay.h"
-#include "BackgroundManager.h"
+#include "BackgroundDisplay.h"
+#include "ScenarioController.h"
 
 #include <iostream>
 
 using namespace std;
+using namespace ScenarioControl;
 
 namespace CommonDisplay
 {
@@ -29,9 +31,6 @@ namespace CommonDisplay
         windowSize = {1600, 850};
         window = SDL_CreateWindow("FF14DS", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, windowSize.w, windowSize.h, SDL_WINDOW_RESIZABLE);
         renderer = SDL_CreateRenderer(window, -1, 0);
-
-        // Creates initial background - taking main menu for now
-        BackgroundManager::initialiseBackground();
     }
 
     /**
@@ -51,11 +50,11 @@ namespace CommonDisplay
             // Handle window resize
             handleWindowResize();
 
+            // Draw current scenario
+            ScenarioController::drawCurrentScenario();
+
             // Handle window event
             handleWindowEvent();
-
-            // Draw background
-            BackgroundManager::drawBackground();
 
             // Apply any renderings to the screen
             SDL_RenderPresent(renderer);
