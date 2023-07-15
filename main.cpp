@@ -8,15 +8,12 @@ using namespace CommonDisplay;
 
 int main(int argc, char *argv[])
 {
-    /**  
-    * Create main display object, this is where:
-    *   Window/renderer gets created
-    *   Events are handled
-    *   SDL2 libraries get initialised
-    *   Main game loop exists
-    *   Exit procedure is handled
-    */
+    // Initialise main display
     initialiseMainDisplay();
+
+    // Run main game loop
     runMainGameLoop();
+
+    // Runs clean up procedure, this will only be reached when main game loop is broken
     exit();
 }

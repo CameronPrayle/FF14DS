@@ -1,21 +1,32 @@
 #include "MainDisplay.h"
+#include "BackgroundManager.h"
 
 namespace CommonDisplay
 {
-    // Window/renderer gets created, SDL2 libraries get initialised
+    /**
+     *  Window/renderer gets created
+     *  SDL2 libraries get initialised
+    */
     void initialiseMainDisplay()
     {
         // Create window, renderer, event director
-        window = SDL_CreateWindow("FF14DS", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1250, 850, SDL_WINDOW_RESIZABLE);
+        windowSize = {1250, 850};
+        window = SDL_CreateWindow("FF14DS", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, windowSize.w, windowSize.h, SDL_WINDOW_RESIZABLE);
         renderer = SDL_CreateRenderer(window, -1, 0);
 
         // Initialise SDL2 Drawing and Fonts
         SDL_Init(SDL_INIT_EVERYTHING);
         TTF_Init();
         IMG_Init(IMG_INIT_PNG);
+
+        // Creates initial background - taking main menu for now
+        initialiseBackground();
     }
 
-    // Main game loop exists
+    /**
+     *  Run the main game loop
+     *  Calls to handle window events
+    */
     void runMainGameLoop()
     {
         run = true;
@@ -23,14 +34,23 @@ namespace CommonDisplay
          // Main loop
         while(run)
         {
+            // Clear renderer
+            SDL_RenderClear(renderer);
+
+            // Handle window event
             handleWindowEvent();
+
+            // Draw background
+            drawBackground();
 
             // Apply any renderings to the screen
             SDL_RenderPresent(renderer);
         }
     }
 
-    // Events are handled
+    /**
+     *  Events are handled
+    */
     void handleWindowEvent()
     {
         // If there is an event
@@ -40,6 +60,11 @@ namespace CommonDisplay
             if(windowEvent.type == SDL_QUIT)
             {
                 run = false;
+            }
+
+            else if(windowEvent.type == SDL_WINDOWEVENT_RESIZED)
+            {
+                setWindowSizeStore();
             }
 
             // LEFT CLICK
@@ -53,6 +78,11 @@ namespace CommonDisplay
         }
     }
 
+    /**
+     *  Exit procedure is handled
+     *  Destorys window and renderer
+     *  Quits initialised SDL2 objects
+    */
     void exit()
     {
         // Clean up
@@ -61,5 +91,18 @@ namespace CommonDisplay
         TTF_Quit();
         IMG_Quit();
         SDL_Quit();
+    }
+
+    /**
+     *  Sets window size store, with float values
+     * 
+    */
+    void setWindowSizeStore()
+    {
+        int *w; int *h;
+        int w2; int h2;
+        SDL_GetWindowSize(window, w, h);
+        w2 = *w; h2 = *h;
+        windowSize = {(float)w2, (float)h2};
     }
 }
