@@ -38,10 +38,10 @@ namespace CommonDisplay
         static void exit();
 
         /**
-         *  Sets window size store, with float values
+         *  Sets window size store
          * 
         */
-        static void setWindowSizeStore();
+        static void handleWindowResize();
 
         static SDL_Window *window;
         static SDL_Renderer *renderer;

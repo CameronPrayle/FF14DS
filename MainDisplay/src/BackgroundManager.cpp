@@ -16,8 +16,6 @@ namespace CommonDisplay
         background.catagory = BACKGROUND_CATAGORY_MAIN_MENU;
         background.backgroundRect.x = 0;
         background.backgroundRect.y = 0;
-        background.backgroundRect.w = MainDisplay::windowSize.w;
-        background.backgroundRect.h = MainDisplay::windowSize.h;
         background.imagePath = getImagePathFromBackgroundCatagory(background.catagory);
         background.surface = IMG_Load(background.imagePath.c_str());
         background.texture = SDL_CreateTextureFromSurface(MainDisplay::renderer, background.surface);
@@ -47,6 +45,8 @@ namespace CommonDisplay
     */
     void BackgroundManager::drawBackground()
     {
+        background.backgroundRect.w = MainDisplay::windowSize.w;
+        background.backgroundRect.h = MainDisplay::windowSize.h;
         SDL_RenderCopy(MainDisplay::renderer, background.texture, NULL, &background.backgroundRect);
     }
 }

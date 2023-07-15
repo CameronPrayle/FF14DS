@@ -71,7 +71,7 @@ namespace CommonDisplay
 
             else if(windowEvent.type == SDL_WINDOWEVENT_RESIZED)
             {
-                setWindowSizeStore();
+                handleWindowResize();
             }
 
             // LEFT CLICK
@@ -101,10 +101,10 @@ namespace CommonDisplay
     }
 
     /**
-     *  Sets window size store, with float values
+     *  Sets window size store
      * 
     */
-    void MainDisplay::setWindowSizeStore()
+    void MainDisplay::handleWindowResize()
     {
         int *w; int *h;
         int w2; int h2;
