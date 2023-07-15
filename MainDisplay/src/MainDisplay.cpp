@@ -3,31 +3,38 @@
 
 namespace CommonDisplay
 {
+    SDL_Window *MainDisplay::window;
+    SDL_Renderer *MainDisplay::renderer;
+    SDL_Event MainDisplay::windowEvent;
+    WindowSize MainDisplay::windowSize;
+    bool MainDisplay::run;
+
     /**
      *  Window/renderer gets created
      *  SDL2 libraries get initialised
     */
-    void initialiseMainDisplay()
-    {
+    void MainDisplay::initialiseMainDisplay()
+    {        
+        // Initialise SDL2 Drawing and Fonts
+        SDL_Init(SDL_INIT_EVENTS);
+        TTF_Init();
+        IMG_Init(IMG_INIT_PNG);
+        IMG_Init(IMG_INIT_JPG);
+
         // Create window, renderer, event director
         windowSize = {1250, 850};
         window = SDL_CreateWindow("FF14DS", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, windowSize.w, windowSize.h, SDL_WINDOW_RESIZABLE);
         renderer = SDL_CreateRenderer(window, -1, 0);
 
-        // Initialise SDL2 Drawing and Fonts
-        SDL_Init(SDL_INIT_EVERYTHING);
-        TTF_Init();
-        IMG_Init(IMG_INIT_PNG);
-
         // Creates initial background - taking main menu for now
-        initialiseBackground();
+        BackgroundManager::initialiseBackground();
     }
 
     /**
      *  Run the main game loop
      *  Calls to handle window events
     */
-    void runMainGameLoop()
+    void MainDisplay::runMainGameLoop()
     {
         run = true;
 
@@ -41,7 +48,7 @@ namespace CommonDisplay
             handleWindowEvent();
 
             // Draw background
-            drawBackground();
+            BackgroundManager::drawBackground();
 
             // Apply any renderings to the screen
             SDL_RenderPresent(renderer);
@@ -51,7 +58,7 @@ namespace CommonDisplay
     /**
      *  Events are handled
     */
-    void handleWindowEvent()
+    void MainDisplay::handleWindowEvent()
     {
         // If there is an event
         if(SDL_PollEvent(&windowEvent))
@@ -83,7 +90,7 @@ namespace CommonDisplay
      *  Destorys window and renderer
      *  Quits initialised SDL2 objects
     */
-    void exit()
+    void MainDisplay::exit()
     {
         // Clean up
         SDL_DestroyWindow(window);
@@ -97,12 +104,12 @@ namespace CommonDisplay
      *  Sets window size store, with float values
      * 
     */
-    void setWindowSizeStore()
+    void MainDisplay::setWindowSizeStore()
     {
         int *w; int *h;
         int w2; int h2;
         SDL_GetWindowSize(window, w, h);
         w2 = *w; h2 = *h;
-        windowSize = {(float)w2, (float)h2};
+        windowSize = {w2, h2};
     }
 }

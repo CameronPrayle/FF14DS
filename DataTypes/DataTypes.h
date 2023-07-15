@@ -19,10 +19,10 @@ typedef enum
 */
 typedef struct
 {
-    SDL_FRect *backgroundRect;              // Rect to hold texture for background
+    SDL_Rect backgroundRect;                // Rect to hold texture for background
     SDL_Texture *texture;                   // Texture that will be applied to background rect
     SDL_Surface *surface;                   // Surface that holds the image that will be used to make the texture
-    const char *imagePath;                  // Image path for the surface
+    std::string imagePath;                  // Image path for the surface
     BackgroundCatagoryEnumType catagory;    // Catagory of the background
 } Background;
 
@@ -32,7 +32,7 @@ typedef struct
 */
 typedef struct
 {
-    float w;
-    float h;
+    int w;
+    int h;
 } WindowSize;
 

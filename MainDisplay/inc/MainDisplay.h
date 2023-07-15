@@ -1,48 +1,52 @@
 #pragma once
 
+#include <string>
+
 #include "SDL.h"
 #include "SDL_ttf.h"
 #include "SDL_image.h"
 
 #include "DataTypes.h"
 
-using namespace std;
-
 namespace CommonDisplay
 {
-    /**
-     *  Window/renderer gets created
-     *  SDL2 libraries get initialised
-    */
-    void initialiseMainDisplay();
+    class MainDisplay
+    {
+        public:
+        /**
+         *  Window/renderer gets created
+         *  SDL2 libraries get initialised
+        */
+        static void initialiseMainDisplay();
 
-    /**
-     *  Run the main game loop
-     *  Calls to handle window events
-    */
-    void runMainGameLoop();
+        /**
+         *  Run the main game loop
+         *  Calls to handle window events
+        */
+        static void runMainGameLoop();
 
-    /**
-     *  Events are handled
-    */
-    void handleWindowEvent();
-    
-    /**
-     *  Exit procedure is handled
-     *  Destorys window and renderer
-     *  Quits initialised SDL2 objects
-    */
-    void exit();
+        /**
+         *  Events are handled
+        */
+        static void handleWindowEvent();
+        
+        /**
+         *  Exit procedure is handled
+         *  Destorys window and renderer
+         *  Quits initialised SDL2 objects
+        */
+        static void exit();
 
-    /**
-     *  Sets window size store, with float values
-     * 
-    */
-    void setWindowSizeStore();
+        /**
+         *  Sets window size store, with float values
+         * 
+        */
+        static void setWindowSizeStore();
 
-    static SDL_Window *window;
-    static SDL_Renderer *renderer;
-    static SDL_Event windowEvent;
-    static WindowSize windowSize;
-    static bool run;
+        static SDL_Window *window;
+        static SDL_Renderer *renderer;
+        static SDL_Event windowEvent;
+        static WindowSize windowSize;
+        static bool run;
+    };
 }

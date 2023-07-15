@@ -1,42 +1,43 @@
+#include "MainDisplay.h"
 #include "BackgroundManager.h"
+
+using namespace std;
 
 namespace CommonDisplay
 {
+    Background BackgroundManager::background; 
+
     /**
      *  Creates initial background
      * 
     */
-    void initialiseBackground()
+    void BackgroundManager::initialiseBackground()
     {
         background.catagory = BACKGROUND_CATAGORY_MAIN_MENU;
+        background.backgroundRect.x = 0;
+        background.backgroundRect.y = 0;
+        background.backgroundRect.w = MainDisplay::windowSize.w;
+        background.backgroundRect.h = MainDisplay::windowSize.h;
         background.imagePath = getImagePathFromBackgroundCatagory(background.catagory);
-        background.surface = IMG_Load(background.imagePath);
-        background.texture = SDL_CreateTextureFromSurface(renderer, background.surface);
-
-        float defaultX = 0.0;
-        float defaultY = 0.0;
-        background.backgroundRect->x = defaultX;
-        background.backgroundRect->y = defaultY;
-        background.backgroundRect->w = windowSize.w;
-        background.backgroundRect->h = windowSize.h;
+        background.surface = IMG_Load(background.imagePath.c_str());
+        background.texture = SDL_CreateTextureFromSurface(MainDisplay::renderer, background.surface);
     }
 
     /**
      *  Returns image path given background catagory
      * 
      *  @param catagory
-     *  @return const char *
+     *  @return string
     */
-    const char *getImagePathFromBackgroundCatagory(BackgroundCatagoryEnumType catagory)
+    string BackgroundManager::getImagePathFromBackgroundCatagory(BackgroundCatagoryEnumType catagory)
     {
-        const char *path;
         switch (catagory)
         {
             case BACKGROUND_CATAGORY_MAIN_MENU:
-                return path = "../Assets/MainMenu/1.png";
+                return "../Assets/MainMenu/bg1.jpg";
             
             default:
-                return path = "";
+                return "";
         }
     }
 
@@ -44,8 +45,8 @@ namespace CommonDisplay
      *  Draws currently stored background to renderer
      * 
     */
-    void drawBackground()
+    void BackgroundManager::drawBackground()
     {
-        SDL_RenderCopyF(renderer, background.texture, NULL, background.backgroundRect);
+        SDL_RenderCopy(MainDisplay::renderer, background.texture, NULL, &background.backgroundRect);
     }
 }

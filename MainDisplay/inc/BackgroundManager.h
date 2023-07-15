@@ -1,28 +1,34 @@
 #pragma once
 
-#include "MainDisplay.h"
+#include <string>
+
+#include "DataTypes.h"
 
 namespace CommonDisplay
 {
-    /**
-     *  Creates initial background
-     * 
-    */
-    void initialiseBackground();
+    class BackgroundManager
+    {
+        public:
+        /**
+         *  Creates initial background
+         * 
+        */
+        static void initialiseBackground();
 
-    /**
-     *  Returns image path given background catagory
-     * 
-     *  @param catagory
-     *  @return const char *
-    */
-    const char *getImagePathFromBackgroundCatagory(BackgroundCatagoryEnumType catagory);
+        /**
+         *  Returns image path given background catagory
+         * 
+         *  @param catagory
+         *  @return string
+        */
+        static std::string getImagePathFromBackgroundCatagory(BackgroundCatagoryEnumType catagory);
 
-    /**
-     *  Draws currently stored background to renderer
-     * 
-    */
-    void drawBackground();
+        /**
+         *  Draws currently stored background to renderer
+         * 
+        */
+        static void drawBackground();
 
-    static Background background;
+        static Background background; 
+    };
 }
