@@ -1,6 +1,10 @@
 #include "MainDisplay.h"
 #include "BackgroundManager.h"
 
+#include <iostream>
+
+using namespace std;
+
 namespace CommonDisplay
 {
     SDL_Window *MainDisplay::window;
@@ -22,7 +26,7 @@ namespace CommonDisplay
         IMG_Init(IMG_INIT_JPG);
 
         // Create window, renderer, event director
-        windowSize = {1250, 850};
+        windowSize = {1600, 850};
         window = SDL_CreateWindow("FF14DS", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, windowSize.w, windowSize.h, SDL_WINDOW_RESIZABLE);
         renderer = SDL_CreateRenderer(window, -1, 0);
 
@@ -43,6 +47,9 @@ namespace CommonDisplay
         {
             // Clear renderer
             SDL_RenderClear(renderer);
+
+            // Handle window resize
+            handleWindowResize();
 
             // Handle window event
             handleWindowEvent();
@@ -67,11 +74,6 @@ namespace CommonDisplay
             if(windowEvent.type == SDL_QUIT)
             {
                 run = false;
-            }
-
-            else if(windowEvent.type == SDL_WINDOWEVENT_RESIZED)
-            {
-                handleWindowResize();
             }
 
             // LEFT CLICK
@@ -106,10 +108,9 @@ namespace CommonDisplay
     */
     void MainDisplay::handleWindowResize()
     {
-        int *w; int *h;
-        int w2; int h2;
-        SDL_GetWindowSize(window, w, h);
-        w2 = *w; h2 = *h;
-        windowSize = {w2, h2};
+        int w = 0; 
+        int h = 0;
+        SDL_GetWindowSize(window, &w, &h);
+        windowSize = {w, h};
     }
 }
