@@ -10,10 +10,11 @@ namespace CommonDisplay
     {
         public:
         /**
-         *  Creates and stores background
+         *  Creates and returns background
          * 
+         * @return Background
         */
-        static Background createBackground(ScenarioCatagoryEnumType catagory);
+        static BackgroundType createBackground(ScenarioCatagoryEnumType catagory);
 
         /**
          *  Returns image path given scenario catagory
@@ -28,6 +29,6 @@ namespace CommonDisplay
          * 
          * @param bg
         */
-        static void drawBackground(Background &bg);
+        static void drawBackground(BackgroundType &bg);
     };
 }

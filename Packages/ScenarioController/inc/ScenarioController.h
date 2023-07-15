@@ -14,7 +14,7 @@ namespace ScenarioControl
          *  Sets up main menu scenario
          *  
         */
-        static void initialiseScenario();
+        static void initialiseScenarioController();
 
         /**
          *  Draws all assest that makeup current scenario
@@ -22,6 +22,6 @@ namespace ScenarioControl
         */
         static void drawCurrentScenario();
 
-        static Scenario currentScenario;
+        static ScenarioType currentScenario;
     };
 }

@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     MainDisplay::initialiseMainDisplay();
 
     // Initialise scenario controller
-    ScenarioController::initialiseScenario();
+    ScenarioController::initialiseScenarioController();
 
     // Run main game loop
     MainDisplay::runMainGameLoop();

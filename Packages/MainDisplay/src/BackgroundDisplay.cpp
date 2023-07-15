@@ -10,9 +10,9 @@ namespace CommonDisplay
      * 
      * @return Background
     */
-    Background BackgroundDisplay::createBackground(ScenarioCatagoryEnumType catagory)
+    BackgroundType BackgroundDisplay::createBackground(ScenarioCatagoryEnumType catagory)
     {
-        Background bg;
+        BackgroundType bg;
         bg.backgroundRect.x = 0;
         bg.backgroundRect.y = 0;
         bg.imagePath = getImagePathFromScenarioCatagory(catagory);
@@ -43,7 +43,7 @@ namespace CommonDisplay
      *  Draws currently stored background to renderer
      * 
     */
-    void BackgroundDisplay::drawBackground(Background &bg)
+    void BackgroundDisplay::drawBackground(BackgroundType &bg)
     {
         bg.backgroundRect.w = MainDisplay::windowSize.w;
         bg.backgroundRect.h = MainDisplay::windowSize.h;

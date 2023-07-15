@@ -46,7 +46,7 @@ namespace CommonDisplay
         static SDL_Window *window;
         static SDL_Renderer *renderer;
         static SDL_Event windowEvent;
-        static WindowSize windowSize;
+        static WindowSizeType windowSize;
         static bool run;
     };
 }

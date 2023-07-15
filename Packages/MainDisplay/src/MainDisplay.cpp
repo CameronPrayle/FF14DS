@@ -12,7 +12,7 @@ namespace CommonDisplay
     SDL_Window *MainDisplay::window;
     SDL_Renderer *MainDisplay::renderer;
     SDL_Event MainDisplay::windowEvent;
-    WindowSize MainDisplay::windowSize;
+    WindowSizeType MainDisplay::windowSize;
     bool MainDisplay::run;
 
     /**
