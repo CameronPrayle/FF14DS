@@ -9,6 +9,8 @@ file(GLOB SOURCES
     Packages/MainDisplay/src/*.cpp
     Packages/ScenarioController/inc/*.h
     Packages/ScenarioController/src/*.cpp
+    Packages/ScenarioDefinition/inc/*.h
+    Packages/ScenarioDefinition/src/*.cpp
 )
 
 add_executable(FF14DS ${SOURCES})
@@ -20,6 +22,7 @@ target_include_directories(FF14DS PUBLIC
     "${PROJECT_SOURCE_DIR}/Packages/DataTypes"
     "${PROJECT_SOURCE_DIR}/Packages/MainDisplay/inc"
     "${PROJECT_SOURCE_DIR}/Packages/ScenarioController/inc"
+    "${PROJECT_SOURCE_DIR}/Packages/ScenarioDefinition/inc"
 )
 
 # Finding SDL2 libraries

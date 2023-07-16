@@ -11,9 +11,9 @@ namespace CommonDisplay
     {
         public:
         /**
-         *  Initialise Scenario Controller
-         *  Sets up main menu scenario
+         *  Creates buttons for a scenario
+         *  
         */
-        static std::vector<ButtonType> createButtons(ScenarioCatagoryEnumType catagory);
+        static std::vector<ButtonType> createButtons();
     };
 }

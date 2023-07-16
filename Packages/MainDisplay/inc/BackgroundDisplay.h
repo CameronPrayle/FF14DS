@@ -11,18 +11,11 @@ namespace CommonDisplay
         public:
         /**
          *  Creates and returns background
-         * 
-         * @return Background
+         *  
+         *  @param bgImagePath
+         *  @return Background
         */
-        static BackgroundType createBackground(ScenarioCatagoryEnumType catagory);
-
-        /**
-         *  Returns image path given scenario catagory
-         * 
-         *  @param catagory
-         *  @return string
-        */
-        static std::string getImagePathFromScenarioCatagory(ScenarioCatagoryEnumType catagory);
+        static BackgroundType createBackground(std::string bgImagePath);
 
         /**
          *  Draws background to renderer

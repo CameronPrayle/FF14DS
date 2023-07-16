@@ -7,36 +7,19 @@ namespace CommonDisplay
 {
     /**
      *  Creates and returns background
-     * 
-     * @return Background
+     *  
+     *  @param bgImagePath
+     *  @return Background
     */
-    BackgroundType BackgroundDisplay::createBackground(ScenarioCatagoryEnumType catagory)
+    BackgroundType BackgroundDisplay::createBackground(string bgImagePath)
     {
         BackgroundType bg;
         bg.backgroundRect.x = 0;
         bg.backgroundRect.y = 0;
-        bg.imagePath = getImagePathFromScenarioCatagory(catagory);
+        bg.imagePath = bgImagePath;
         bg.surface = IMG_Load(bg.imagePath.c_str());
         bg.texture = SDL_CreateTextureFromSurface(MainDisplay::renderer, bg.surface);
         return bg;
-    }
-
-    /**
-     *  Returns image path given scenario catagory
-     * 
-     *  @param catagory
-     *  @return string
-    */
-    string BackgroundDisplay::getImagePathFromScenarioCatagory(ScenarioCatagoryEnumType catagory)
-    {
-        switch (catagory)
-        {
-            case SCENARIO_CATAGORY_MAIN_MENU:
-                return "../Assets/MainMenu/bg1.jpg";
-            
-            default:
-                return "";
-        }
     }
 
     /**

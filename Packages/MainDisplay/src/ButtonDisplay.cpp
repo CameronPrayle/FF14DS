@@ -3,14 +3,12 @@
 namespace CommonDisplay
 {
     /**
-     *  Initialise Scenario Controller
-     *  Sets up main menu scenario
+     *  Creates buttons for a scenario
+     *  
     */
-    std::vector<ButtonType> ButtonDisplay::createButtons(ScenarioCatagoryEnumType catagory)
+    std::vector<ButtonType> ButtonDisplay::createButtons()
     {
-        if(catagory == SCENARIO_CATAGORY_MAIN_MENU)
-        {
-            
-        }
+        std::vector<ButtonType> btns;
+        return btns;
     }
 }
